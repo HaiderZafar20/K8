@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: haider-pod-2
+spec:
+  containers:
+    - name: haider-container-1
+      image: nginx:1.25   
+      ports:
+        - containerPort: 80
+    - name: haider-container-2
+      image: ubuntu:latest
+      ports:
+        - containerPort: 80
