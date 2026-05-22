@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: haider-replicaset
+  labels:
+    app: web
+spec: #Defines the behavior of the ReplicaSet
+  replicas: 3 #Number of desired pods
+  selector: #Defines how to identify the pods that belong to this ReplicaSet
+    matchLabels:
+      web: nginx
+  template: #Defines the pod template used to create new pods
+    metadata:
+      labels:
+        web: nginx
+    spec: #Defines the behaiour of pods 
+      containers:
+        - name: haider-container
+          image: nginx:1.25   
+          ports:
+            - containerPort: 80
