@@ -11,4 +11,4 @@ spec:
     - name: haider-container-2
       image: ubuntu:latest
       ports:
-        - containerPort: 80
+        - containerPort: 8000
