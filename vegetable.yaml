@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vegetable-deployment
+  labels:
+    app: vegetable-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vegetable-app
+  template:
+    metadata:
+      labels:
+        app: vegetable-app
+    spec:
+      containers:
+      - name: vegetable-app-container
+        image: haiderzafar/haider:1.0
+        ports:
+        - containerPort: 3000

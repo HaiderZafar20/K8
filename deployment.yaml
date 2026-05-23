@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: haider-deployment
+  name: nginx-deployment
   labels:
     first: app
 spec: # behaviour of the replica set
@@ -15,7 +15,7 @@ spec: # behaviour of the replica set
         app: web
     spec: # behaviour of the pods
       containers:
-        - name: haider-container
+        - name: nginx-container
           image: nginx:1.25
           ports:
             - containerPort: 80
