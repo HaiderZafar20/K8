@@ -1,21 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vegetable-deployment
+  name: ubuntu-deployment
   labels:
-    app: vegetable-app
+    app: ubuntu-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: vegetable-app
+      app: ubuntu-app
   template:
     metadata:
       labels:
-        app: vegetable-app
+        app: ubuntu-app
     spec:
       containers:
-      - name: vegetable-app-container
-        image: haiderzafar/haider:1.0
+      - name: ubuntu-app-container
+        image: ubuntu:latest
         ports:
-        - containerPort: 3000
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 82
+      targetPort: 80
+  type: NodePort
