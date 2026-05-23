@@ -26,9 +26,9 @@ metadata:
   name: my-service
 spec:
   selector:
-    app: web
+    app: ubuntu-app
   ports:
     - protocol: TCP
-      port: 82
+      port: 83
       targetPort: 80
   type: NodePort
