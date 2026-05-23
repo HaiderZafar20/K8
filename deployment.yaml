@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haider-deployment
+  labels:
+    first: app
+spec: # behaviour of the replica set
+  replicas: 3
+  selector: # how to identify the pods that belong to this deployment
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec: # behaviour of the pods
+      containers:
+        - name: haider-container
+          image: nginx:1.25
+          ports:
+            - containerPort: 80
