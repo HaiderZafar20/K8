@@ -1,34 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ubuntu-deployment
+  name: sport-deployment
   labels:
-    app: ubuntu-app
+    app: sport-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ubuntu-app
+      app: sport-app
   template:
     metadata:
       labels:
-        app: ubuntu-app
+        app: sport-app
     spec:
       containers:
-      - name: ubuntu-app-container
-        image: ubuntu:latest
+      - name: sport-container
+        image: haiderzafar/sport:v1.0.0
         ports:
-          - containerPort: 80
+          - containerPort: 5000
+            envFrom:
+              - configMapRef:
+                  name: my-configmap
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ubuntu-service
+  name: sport-service
 spec:
   selector:
-    app: ubuntu-app
+    app: sport-app
   ports:
     - protocol: TCP
-      port: 83
-      targetPort: 80
+      port: 5002
+      targetPort: 5000
   type: NodePort
