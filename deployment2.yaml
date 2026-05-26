@@ -19,9 +19,9 @@ spec:
         image: haiderzafar/sport:v1.0.0
         ports:
           - containerPort: 5000
-            envFrom:
-              - configMapRef:
-                  name: my-configmap
+        envFrom:
+          - configMapRef:
+              name: my-configmap
 ---
 apiVersion: v1
 kind: Service
