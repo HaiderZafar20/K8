@@ -19,6 +19,9 @@ spec:
         image: haiderzafar/fitness:v1.0.0
         ports:
           - containerPort: 5000
+            envFrom:
+              - configMapRef:
+                  name: haider-configmap
 ---
 apiVersion: v1
 kind: Service
