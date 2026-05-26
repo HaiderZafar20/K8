@@ -21,7 +21,9 @@ spec:
           - containerPort: 5000
         envFrom:
           - configMapRef:
-              name: haider-configmap
+              name: my-configmap
+          - secretRef:
+              name: haider-secret
 ---
 apiVersion: v1
 kind: Service
