@@ -1,0 +1,28 @@
+namespace:
+  name: haider-ns
+replicas: 3
+labels:
+  app: fitness-app
+containers:
+  - name: fitness-container
+    port: 5000
+service:
+  name: fitness-service
+  port: 5002
+  targetPort: 5000
+  type: NodePort
+configMap:
+  name: my-configmap
+  data:
+    DB_Host: MongoDB
+    DB_Port: "27017"
+    DB_User: admin
+    APP_name: fitness-app
+    API_Port: "5000"
+secret:
+  name: haider-secret
+  type: Opaque
+  data:
+    DB_User: QURNSU4=
+    DB_Password: aGFpZGVyMTIz
+

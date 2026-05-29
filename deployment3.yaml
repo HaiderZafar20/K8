@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fitness-deployment
+  name: {{.Release.Name}}-dep
   labels:
     app: fitness-app
 spec:
-  replicas: 3
+  replicas: {{.values.replicas}}
   selector:
     matchLabels:
       app: fitness-app
   template:
     metadata:
       labels:
-        app: fitness-app
+        app: {{.values.labels.app}}
     spec:
       containers:
-      - name: fitness-container
-        image: haiderzafar/fitness:v1.0.0
+      - name: {{.values.container.name}}
+        image: {{.values.container.image}}
         ports:
-          - containerPort: 5000
+          - containerPort: {{.values.container.port}}
         envFrom:
           - configMapRef:
-              name: my-configmap
+              name: {{.values.configmap.name}}
           - secretRef:
-              name: haider-secret
+              name: {{.values.secret.name}}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fitness-service
+  name: {{.values.service.name}}
 spec:
   selector:
     app: fitness-app
   ports:
     - protocol: TCP
-      port: 5002
-      targetPort: 5000
-  type: NodePort
+      port: {{.values.service.port}}
+      targetPort: {{.values.service.targetPort}}
+  type: {{.values.service.type}}

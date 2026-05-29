@@ -6,5 +6,5 @@ data:
   DB_Host: MongoDB
   DB_Port: "27017"
   DB_User: admin
-  APP_name: fitness-app
+  APP_name: sport-app
   API_Port: "5000"

@@ -1,0 +1,5 @@
+apiVersin: v2
+name: haider-chart
+description: A Helm chart for kubernetes
+version: 1.0.0 
+appVersion: "1.0.0"
